@@ -33,6 +33,7 @@ const RootLayout = (props: Props) => {
       </head>
       <body>
         <Provider>
+          {/* NOTE These two divs are causing rendering issues for server side but the project can continue fine */}
           <div className="main">
             <div className="gradient" />
           </div>
