@@ -10,16 +10,19 @@ interface Provider {
 }
 
 const Nav: FC<{}> = () => {
-  const isUserLoggedIn: boolean = true;
+  const { data: session } = useSession();
+
   const [providers, setProviders] = useState<Provider[] | null>(null);
   const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
 
   useEffect(() => {
-    const setProviders: any = async () => {
+    const setupProviders: any = async () => {
       const response = await getProviders();
-      setProviders(response);
+      if (response) {
+        setProviders(Object.values(response));
+      }
     };
-    setProviders();
+    setupProviders();
   }, []);
 
   return (
@@ -34,14 +37,20 @@ const Nav: FC<{}> = () => {
         <p className="logo_text">Promptopia</p>
       </Link>
 
+      {/* {alert(providers)} */}
+
       {/* Desktop Navigation */}
       <div className="sm:flex hidden">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="flex gap-3 md:gap-5">
             <Link href="/create-prompt" className="black_btn">
               Create Post
             </Link>
-            <button type="button" onClick={signOut} className="outline_btn">
+            <button
+              type="button"
+              onClick={() => signOut()}
+              className="outline_btn"
+            >
               Sign Out
             </button>
             <Link href="/profile">
@@ -51,7 +60,7 @@ const Nav: FC<{}> = () => {
                 height={37}
                 className="rounded-full"
                 alt="profile"
-              ></Image>
+              />
             </Link>
           </div>
         ) : (
@@ -63,7 +72,9 @@ const Nav: FC<{}> = () => {
                   key={provider.name}
                   onClick={() => signIn(provider.id)}
                   className="black_btn"
-                ></button>
+                >
+                  Sign In
+                </button>
               ))}
           </>
         )}
@@ -71,7 +82,7 @@ const Nav: FC<{}> = () => {
 
       {/* Mobile Navigation */}
       <div className="sm:hidden flex relative cursor-pointer">
-        {isUserLoggedIn ? (
+        {session?.user ? (
           <div className="flex">
             <Image
               src="/assets/images/logo.svg"
@@ -119,7 +130,9 @@ const Nav: FC<{}> = () => {
                   key={provider.name}
                   onClick={() => signIn(provider.id)}
                   className="black_btn"
-                ></button>
+                >
+                  Sign In
+                </button>
               ))}
           </>
         )}

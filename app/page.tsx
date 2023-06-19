@@ -1,4 +1,5 @@
 import Feed from "@components/Feed";
+
 type Props = {};
 
 const Home = (props: Props) => {

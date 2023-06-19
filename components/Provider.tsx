@@ -2,14 +2,15 @@
 
 import React from "react";
 import { SessionProvider } from "next-auth/react";
+import { Session } from "next-auth";
 
 type Props = {
   children: React.ReactNode;
-  session?: any;
+  session?: Session | null | undefined;
 };
 
-function Provider({ children, session }: Props) {
+const Provider: React.FC<Props> = ({ children, session }) => {
   return <SessionProvider session={session}>{children}</SessionProvider>;
-}
+};
 
 export default Provider;

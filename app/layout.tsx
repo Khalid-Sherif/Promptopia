@@ -1,6 +1,8 @@
 import "@styles/globals.css";
 import Nav from "@components/Nav";
 import Provider from "@components/Provider";
+import React from "react";
+
 interface Metadata {
   title: string;
   description: string;
@@ -11,8 +13,6 @@ export const metadata: Metadata = {
   description: "Discover & Share AI Prompts",
 };
 
-import React from "react";
-
 type Props = {
   children: React.ReactNode;
 };
@@ -20,6 +20,17 @@ type Props = {
 const RootLayout = (props: Props) => {
   return (
     <html lang="en">
+      <head>
+        <title>Promptopia</title>
+        <meta
+          name="description"
+          content="A platform for creating and sharing writing prompts"
+        />
+        <meta
+          name="keywords"
+          content="writing, prompts, creative writing, inspiration"
+        />
+      </head>
       <body>
         <Provider>
           <div className="main">
