@@ -19,6 +19,7 @@ const Nav: FC<{}> = () => {
     const setupProviders: any = async () => {
       const response = await getProviders();
       if (response) {
+        // console.log(response);
         setProviders(Object.values(response));
       }
     };
@@ -55,7 +56,7 @@ const Nav: FC<{}> = () => {
             </button>
             <Link href="/profile">
               <Image
-                src="/assets/images/logo.svg"
+                src={session?.user.image!}
                 width={37}
                 height={37}
                 className="rounded-full"
@@ -85,7 +86,7 @@ const Nav: FC<{}> = () => {
         {session?.user ? (
           <div className="flex">
             <Image
-              src="/assets/images/logo.svg"
+              src={session?.user.image!}
               width={37}
               height={37}
               className="rounded-full"
