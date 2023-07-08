@@ -12,7 +12,6 @@ export interface Post {
 }
 
 type User = {
-  id: string;
   name?: string | null | undefined;
   email?: string | null | undefined;
   image?: string | null | undefined;
@@ -35,7 +34,7 @@ const CreatePrompt = () => {
         method: "POST",
         body: JSON.stringify({
           prompt: post.prompt,
-          userId: (session?.user as User).id,
+          userId: session?.user?.id,
           tag: post.tag,
         }),
       });

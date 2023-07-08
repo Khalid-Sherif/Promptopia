@@ -15,8 +15,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 - TypeScript
 - JavaScript
 - HTML & CSS
-- ReactJs
-- NextJs
+- ReactJs v18
+- NextJs v13
 - Tailwind
 - MongoDB
 - Mongoose

@@ -1,6 +1,13 @@
 import React from "react";
-import PromptCard from "./PromptCard";
-type Props = {};
+import PromptCard, { PostType } from "./PromptCard";
+
+type Props = {
+  name: string;
+  desc: string;
+  data: PostType[];
+  handleEdit: (post: PostType) => void;
+  handleDelete: (post: PostType) => void;
+};
 
 const Profile: React.FC<Props> = ({
   name,

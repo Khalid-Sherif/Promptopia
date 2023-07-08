@@ -1,11 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 
-import PromptCard from "./PromptCard";
-
+import PromptCard, { PostType } from "./PromptCard";
 type PromptCardListProps = {
-  data: [];
-  handleTagClick: string;
+  data: PostType[];
+  handleTagClick: () => void;
 };
 
 const PromptCardList: React.FC<PromptCardListProps> = ({
@@ -28,7 +27,7 @@ const PromptCardList: React.FC<PromptCardListProps> = ({
 type Props = {};
 
 const Feed: React.FC<{}> = () => {
-  const [searchText, setSearchText] = useState<String>("");
+  const [searchText, setSearchText] = useState<string>("");
   const [posts, setPosts] = useState<[]>([]);
 
   const handleSearchChange = () => {};
@@ -43,6 +42,10 @@ const Feed: React.FC<{}> = () => {
 
     fetchPosts();
   }, []);
+
+  // const handleTagClick = (tagName) => {
+  //   setSearchText(tagName);
+  // };
 
   return (
     <section className="feed">
