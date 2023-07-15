@@ -12,12 +12,6 @@ export interface Post {
   tag: string;
 }
 
-// type User = {
-//   name?: string | null | undefined;
-//   email?: string | null | undefined;
-//   image?: string | null | undefined;
-// };
-
 const CreatePrompt = () => {
   const router = useRouter();
   const { data: session } = useSession();
