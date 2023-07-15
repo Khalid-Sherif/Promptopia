@@ -22,6 +22,11 @@ const RootLayout = (props: Props) => {
     <html lang="en">
       <head>
         <title>Promptopia</title>
+        <link
+          rel="shortcut icon"
+          type="image/png"
+          href="/assets/images/logo.png"
+        />
         <meta
           name="description"
           content="A platform for creating and sharing writing prompts"
