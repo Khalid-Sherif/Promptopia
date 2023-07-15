@@ -3,9 +3,6 @@ import { useState } from "react";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
-import { DefaultSession } from "next-auth";
-
-import { User } from "@app/profile/page";
 
 export type PostType = {
   creator: {
