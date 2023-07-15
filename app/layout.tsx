@@ -33,9 +33,9 @@ const RootLayout = (props: Props) => {
       </head>
       <body>
         <Provider>
-          {/* <div className="main">
+          <div className="main">
             <div className="gradient" />
-          </div> */}
+          </div>
           <main className="app">
             <Nav />
             {props.children}
