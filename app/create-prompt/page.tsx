@@ -5,17 +5,18 @@ import { Session } from "next-auth";
 import { useRouter } from "next/navigation";
 
 import Form from "@components/Form";
+import { User } from "@app/profile/page";
 
 export interface Post {
   prompt: string;
   tag: string;
 }
 
-type User = {
-  name?: string | null | undefined;
-  email?: string | null | undefined;
-  image?: string | null | undefined;
-};
+// type User = {
+//   name?: string | null | undefined;
+//   email?: string | null | undefined;
+//   image?: string | null | undefined;
+// };
 
 const CreatePrompt = () => {
   const router = useRouter();
@@ -34,7 +35,7 @@ const CreatePrompt = () => {
         method: "POST",
         body: JSON.stringify({
           prompt: post.prompt,
-          userId: session?.user?.id,
+          userId: (session?.user as User).id,
           tag: post.tag,
         }),
       });
