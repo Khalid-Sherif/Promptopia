@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { usePathname, useRouter } from "next/navigation";
 
+// Define the type for the post object
 export type PostType = {
   creator: {
     _id: string;
@@ -78,7 +79,7 @@ const PromptCard: React.FC<Props> = ({
         className="font-inter text-sm blue_gradient cursor-pointer"
         onClick={() => {}}
       >
-        {post.tag}
+        {`#${post.tag}`}
       </p>
       {session?.user?.id === post.creator._id && pathName === "/profile" && (
         <div className="mt-5 flex-center gap-4 border-t border-gray-100 pt-3">

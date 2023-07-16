@@ -11,6 +11,7 @@ import { DefaultSession } from "next-auth";
 //     clientSecret: process.env.GOOGLE_CLIENT_SECRET
 // })
 
+// Module augmentation to add "id" property to the user session
 declare module "next-auth" {
   interface Session {
     user?: {
@@ -31,10 +32,12 @@ const handler = NextAuth({
   },
   callbacks: {
     async session({ session }) {
+      // Find user in the database based on session email
       const sessionUser = await User.findOne({
         email: session?.user?.email,
       });
 
+      // Set "id" property of session user to the user's ID from the database
       session.user = {
         ...(session.user ?? {}),
         id: sessionUser?._id?.toString(),
@@ -44,7 +47,7 @@ const handler = NextAuth({
     },
     async signIn({ profile }) {
       try {
-        // serverless -> lambda -> dynamodb
+        // connect to Database
         await connectToDB();
 
         // check if a user already exists
@@ -52,7 +55,7 @@ const handler = NextAuth({
           email: profile?.email,
         });
 
-        // if not, create a new user
+        // if user does not exist, create a new user
         if (!userExists) {
           await User.create({
             email: profile?.email,

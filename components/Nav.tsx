@@ -15,6 +15,7 @@ const Nav: FC<{}> = () => {
   const [providers, setProviders] = useState<Provider[] | null>(null);
   const [toggleDropdown, setToggleDropdown] = useState<boolean>(false);
 
+  // Using useEffect to fetch providers on component mount
   useEffect(() => {
     const setupProviders: any = async () => {
       const response = await getProviders();
@@ -65,6 +66,7 @@ const Nav: FC<{}> = () => {
             </Link>
           </div>
         ) : (
+          // If the user is not signed in, show the Sign In button
           <>
             {providers &&
               Object.values(providers).map((provider) => (
@@ -83,6 +85,7 @@ const Nav: FC<{}> = () => {
 
       {/* Mobile Navigation */}
       <div className="sm:hidden flex relative cursor-pointer">
+        {/* If the user is signed in, show the user profile image and dropdown menu */}
         {session?.user ? (
           <div className="flex">
             <Image
@@ -123,6 +126,7 @@ const Nav: FC<{}> = () => {
             )}
           </div>
         ) : (
+          // If the user is not signed in, show the Sign In button
           <>
             {providers &&
               Object.values(providers).map((provider) => (
