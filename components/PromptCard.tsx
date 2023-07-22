@@ -56,9 +56,6 @@ const PromptCard: React.FC<Props> = ({
             <h3 className="font-satoshi font-semibold text-gray-900">
               {post.creator.username}
             </h3>
-            <p className="fontr-inter text-sm text-gray-500">
-              {post.creator.email}
-            </p>
           </div>
         </div>
         <div className="copy_btn" onClick={() => {}}>
