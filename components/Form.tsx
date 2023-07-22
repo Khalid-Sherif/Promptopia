@@ -43,7 +43,8 @@ const Form: FC<Props> = (props: Props) => {
           <span className="font-satoshi font-semibold text-base text-gray-700">
             Tag {""}
             <span className="font-normal">
-              (#product, #webdevelopment, #idea)
+              (product, webdevelopment, idea) You don't need to type # at the
+              beginning 😄
             </span>
           </span>
           <input
